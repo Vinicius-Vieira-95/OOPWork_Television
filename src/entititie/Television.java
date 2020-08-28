@@ -3,7 +3,9 @@ package entititie;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class Television {
+import exceptions.ExceptionChannel;
+
+public class Television {
 
 	public String id;
 	private Integer vol;
@@ -22,6 +24,7 @@ public  class Television {
 		this.vol = 5;
 		this.channels = registeredChannels;
 		availableChannels();
+		channelOrder();
 	}
 
 	public Integer getVol() {
@@ -47,7 +50,18 @@ public  class Television {
 		registeredChannels.add(new Channel("SBT", 12, false));
 		registeredChannels.add(new Channel("Band", 20, false));
 		registeredChannels.add(new Channel("Record", 8, true));
+		registeredChannels.add(new Channel("RedeTv", 2, true));
+		registeredChannels.add(new Channel("TvMetropole", 16, false));
+		registeredChannels.add(new Channel("RedeUnião", 17, true));
+		registeredChannels.add(new Channel("TvDiario", 22, true));
+		registeredChannels.add(new Channel("TvAparecida", 19, false));
 
+	}
+
+	// Gerar Ordem dos canais
+	public void channelOrder() {
+		channels.sort((c1, c2) -> c1.getNumber().compareTo(c2.getNumber()));
+		// System.out.println(channels);
 	}
 
 	public int volumeUp() {
@@ -60,22 +74,23 @@ public  class Television {
 	}
 
 	public int volumeDown() {
-		
+
 		if (vol > volMin) {
 			return vol -= DOWN;
 		} else {
 			return vol;
 		}
 	}
-	
+
+	// abstract
 	public void registerChannels() {
-		
+
 	}
-	
+
 	public boolean existingChannel(Channel ch) {
-		
-		for( Channel c : channels) {
-			if(c.getNumber().equals(ch.getNumber())){
+
+		for (Channel c : channels) {
+			if (c.getNumber().equals(ch.getNumber())) {
 				System.out.println(c);
 				return true;
 			}
@@ -83,16 +98,66 @@ public  class Television {
 		System.out.println("Channel not found");
 		return false;
 	}
-	
-	//Sicronizar canal///
-	public void synChannel( Integer num) {
-		
-		for(Channel c : channels) {
-			if(c.getNumber().equals(num)) {
-				
+
+	public boolean synChannel(Integer num) {
+
+		for (Channel c : channels) {
+			if (c.getNumber().equals(num)) {
+				setCurrentChannel(c);
+				return true;
 			}
 		}
-		
+
+		throw new ExceptionChannel("Channel not sycronized");
 	}
-	
+
+	/*
+	 * Alterar canal: recebe como parâmetro “próximo” ou “anterior” e altera o canal
+	 * atual de acordo com o parâmetro solicitado. Se o canal atual for o último da
+	 * lista e for solicitado próximo canal, deve-se voltar ao início da lista. Já
+	 * se for o primeiro canal e solicitar o anterior, deve-se pular para o último
+	 * canal da lista.
+	 * 
+	 */
+
+	public boolean changeChannel(String arg) {
+
+		if (arg.equalsIgnoreCase("Next")) {
+			int i = 0;
+			for (Channel ch : channels) {
+
+				if (ch.equals(currentChannel)) {
+					try {
+					currentChannel = channels.get(i + 1);
+					}
+					catch(IndexOutOfBoundsException e) {
+						//System.out.println(e.getMessage());
+						currentChannel = channels.get(0);
+					}
+					return true;
+				}
+				i++;
+			}
+		}
+		else if (arg.equalsIgnoreCase("Previous")) {
+
+			int i = 0;
+			for (Channel ch : channels) {
+
+				if (ch.equals(currentChannel)) {
+					try {
+					currentChannel = channels.get(i - 1);
+					}
+					catch(IndexOutOfBoundsException e) {
+						currentChannel = channels.get(channels.size()-1);
+					}
+					return true;
+				}
+				i++;
+			}
+		}
+		return false;
+	}
+
+
 }

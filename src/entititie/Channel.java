@@ -41,7 +41,7 @@ public class Channel {
 	}
 	
 	public String toString() {
-		return "Tv:"+ name +" Canal: "+number ;
+		return "Tv:"+ name +" Canal: "+number +"HD: "+ HD;
 		
 	}
 
