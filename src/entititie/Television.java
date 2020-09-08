@@ -58,7 +58,7 @@ public class Television {
 
 	}
 
-	// Gerar Ordem dos canais
+	// Gerar Ordem dos canais pegando o numero do canal
 	public void channelOrder() {
 		channels.sort((c1, c2) -> c1.getNumber().compareTo(c2.getNumber()));
 		// System.out.println(channels);
@@ -128,28 +128,28 @@ public class Television {
 
 				if (ch.equals(currentChannel)) {
 					try {
-					currentChannel = channels.get(i + 1);
-					}
-					catch(IndexOutOfBoundsException e) {
-						//System.out.println(e.getMessage());
+
+						// canal atual recebe o proximo canal em ordem do numero do canal.
+						currentChannel = channels.get(i + 1);
+					} catch (IndexOutOfBoundsException e) {
+						// System.out.println(e.getMessage());
 						currentChannel = channels.get(0);
 					}
 					return true;
 				}
 				i++;
 			}
-		}
-		else if (arg.equalsIgnoreCase("Previous")) {
+		} else if (arg.equalsIgnoreCase("Previous")) {
 
 			int i = 0;
 			for (Channel ch : channels) {
 
 				if (ch.equals(currentChannel)) {
 					try {
-					currentChannel = channels.get(i - 1);
-					}
-					catch(IndexOutOfBoundsException e) {
-						currentChannel = channels.get(channels.size()-1);
+						// canal atual recebe o canal anterior em ordem do numero do canal.
+						currentChannel = channels.get(i - 1);
+					} catch (IndexOutOfBoundsException e) {
+						currentChannel = channels.get(channels.size() - 1);
 					}
 					return true;
 				}
@@ -158,6 +158,23 @@ public class Television {
 		}
 		return false;
 	}
+	
+	public void Showgrid() {
+	
+		for(Channel ch : channels ) {
+			System.out.println(ch);
+		}
+		
+	}
 
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

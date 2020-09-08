@@ -39,6 +39,13 @@ public class Program {
 				System.out.println("//////");
 				System.out.println(tv.getCurrentChannel());
 				
+				tv.changeChannel("Next");
+				System.out.println("//////");
+				System.out.println(tv.getCurrentChannel());
+				
+				System.out.println();
+				tv.Showgrid();
+				
 			}
 			catch(ExceptionChannel e) {
 				System.out.println(e.getMessage());
