@@ -2,6 +2,7 @@ package aplication;
 
 import java.util.Scanner;
 
+import DesignTv.SmartTV;
 import entititie.Television;
 import exceptions.ExceptionChannel;
 
@@ -11,7 +12,7 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		Television tv = new Television(null);
+		Television tv = new SmartTV(42, "LG");
 		System.out.println("Volume atual: " + tv.getVol());
 		int x = 0;
 		int i = 0;

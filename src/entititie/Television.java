@@ -5,11 +5,11 @@ import java.util.List;
 
 import exceptions.ExceptionChannel;
 
-public class Television {
+public abstract class Television {
 
-	public String id;
-	private Integer vol;
-	private Channel currentChannel;
+	protected String id;
+	protected Integer vol;
+	protected Channel currentChannel;
 
 	static final Integer UP = 1;
 	static final Integer DOWN = 1;
@@ -19,8 +19,11 @@ public class Television {
 
 	List<Channel> channels = new ArrayList<>();
 	List<Channel> registeredChannels = new ArrayList<>();
-
-	public Television(List<Channel> channels) {
+	
+	
+	public Television(String id){
+		
+		this.id = id;
 		this.vol = 5;
 		this.channels = registeredChannels;
 		availableChannels();
@@ -83,9 +86,7 @@ public class Television {
 	}
 
 	// abstract
-	public void registerChannels() {
-
-	}
+	public abstract void registerChannels();
 
 	public boolean existingChannel(Channel ch) {
 
