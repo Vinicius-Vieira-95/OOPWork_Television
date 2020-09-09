@@ -3,6 +3,7 @@ package aplication;
 import java.util.Scanner;
 
 import DesignTv.SmartTV;
+import DesignTv.TVHD;
 import entititie.Television;
 import exceptions.ExceptionChannel;
 
@@ -12,12 +13,13 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		Television tv = new SmartTV(42, "LG");
+		Television tv = new SmartTV(42,null, "LG");
+		
+		Television tv2 = new TVHD(null, null, false, null, null);
 		System.out.println("Volume atual: " + tv.getVol());
 		int x = 0;
 		int i = 0;
-		tv.channelOrder();
-		System.out.println(tv.getCurrentChannel());
+		
 		while (i != 3) {
 
 			try {

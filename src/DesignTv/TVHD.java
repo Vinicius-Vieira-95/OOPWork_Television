@@ -1,5 +1,8 @@
 package DesignTv;
 
+import java.util.List;
+
+import entititie.Channel;
 import entititie.Television;
 
 public class TVHD extends Television {
@@ -8,11 +11,12 @@ public class TVHD extends Television {
 	private String Plasma;
 	private boolean HD;
 	
-	public TVHD(String LED, String plasma, boolean HD, String id) {
-		super(id);
+	public TVHD(String LED, String plasma, boolean HD,List<Channel>ch, String id) {
+		super(ch,id);
 		this.LED = LED;
 		this.Plasma = plasma;
 		this.HD = HD;
+		registerChannels();
 	}
 
 	public String getLED() {
@@ -41,8 +45,7 @@ public class TVHD extends Television {
 
 	@Override
 	public void registerChannels() {
-		// TODO Auto-generated method stub
-		
+		currentChannel = channels.get(channels.size() -1);
 	}
 	
 	

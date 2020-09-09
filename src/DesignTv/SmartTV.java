@@ -1,6 +1,9 @@
 package DesignTv;
 
 
+import java.util.List;
+
+import entititie.Channel;
 import entititie.Television;
 
 public class SmartTV extends Television {
@@ -8,9 +11,10 @@ public class SmartTV extends Television {
 	
 	private Integer inch; 
 	
-	public SmartTV(Integer inch, String id) {
-		super(id);
+	public SmartTV(Integer inch,List<Channel>ch, String id) {
+		super(ch,id);
 		this.setInch(inch);
+		registerChannels();
 	}
 
 	public Integer getInch() {
@@ -23,7 +27,7 @@ public class SmartTV extends Television {
 
 	@Override
 	public void registerChannels() {
-		
+		currentChannel = channels.get(0);
 	}
 	
 

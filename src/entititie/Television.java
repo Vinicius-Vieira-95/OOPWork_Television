@@ -17,15 +17,20 @@ public abstract class Television {
 	private static final Integer volMax = 10;
 	private static final Integer volMin = 0;
 
-	List<Channel> channels = new ArrayList<>();
-	List<Channel> registeredChannels = new ArrayList<>();
+	protected List<Channel> channels = new ArrayList<>();
+	protected List<Channel> registeredChannels = new ArrayList<>();
 	
+	public Television() {
+		
+	}
 	
-	public Television(String id){
+	public Television(List<Channel> channels, String id){
 		
 		this.id = id;
 		this.vol = 5;
+		this.channels = channels;
 		this.channels = registeredChannels;
+		
 		availableChannels();
 		channelOrder();
 	}
