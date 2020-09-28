@@ -17,22 +17,14 @@ public class Program {
 		Television smartTV = new SmartTV(42,null, "LG");
 		Television tvHD = new TVHD("Led", "Plasma", false, null, "TV133");
 		
-		RemoteControl remoteControl = new RemoteControl() ;
-		
-		System.out.println("Volume atual SmartTv: " + smartTV.getVol());
-		System.out.println("Volume atual SmartTv: " + tvHD.getVol());
 		int i = 0;
 		
-		while (i != 3) {
+		while (i != 3){
 
 			try {
 				
 				System.out.println(smartTV.toString());
 				System.out.println(tvHD.toString());	
-				
-				//remoteControl.addTV(tvHD);
-				
-				remoteControl.Showgrid();
 				
 			}
 			catch(ExceptionChannel e) {
