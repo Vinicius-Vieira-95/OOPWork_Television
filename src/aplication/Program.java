@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import DesignTv.SmartTV;
 import DesignTv.TVHD;
+import entititie.RemoteControl;
 import entititie.Television;
 import exceptions.ExceptionChannel;
 
@@ -13,47 +14,32 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		Television tv = new SmartTV(42,null, "LG");
+		Television smartTV = new SmartTV(42,null, "LG");
+		Television tvHD = new TVHD("Led", "Plasma", false, null, "TV133");
 		
-		Television tv2 = new TVHD(null, null, false, null, null);
-		System.out.println("Volume atual: " + tv.getVol());
-		int x = 0;
+		RemoteControl remoteControl = new RemoteControl() ;
+		
+		System.out.println("Volume atual SmartTv: " + smartTV.getVol());
+		System.out.println("Volume atual SmartTv: " + tvHD.getVol());
 		int i = 0;
 		
 		while (i != 3) {
 
 			try {
 				
-				System.out.print("new Channel:");
-				x = sc.nextInt();
-				tv.synChannel(x);
+				System.out.println(smartTV.toString());
+				System.out.println(tvHD.toString());	
 				
-				System.out.println(tv.getCurrentChannel());
+				//remoteControl.addTV(tvHD);
 				
-				tv.changeChannel("Next");
-				System.out.println("//////");
-				System.out.println(tv.getCurrentChannel());
-				
-				tv.changeChannel("Previous");
-				System.out.println("//////");
-				System.out.println(tv.getCurrentChannel());
-				
-				tv.changeChannel("Next");
-				System.out.println("//////");
-				System.out.println(tv.getCurrentChannel());
-				
-				tv.changeChannel("Next");
-				System.out.println("//////");
-				System.out.println(tv.getCurrentChannel());
-				
-				System.out.println();
-				tv.Showgrid();
+				remoteControl.Showgrid();
 				
 			}
 			catch(ExceptionChannel e) {
 				System.out.println(e.getMessage());
 			}
 			
+			i = 3;
 
 		}
 

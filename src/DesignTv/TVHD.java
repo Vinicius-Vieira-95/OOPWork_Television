@@ -11,6 +11,9 @@ public class TVHD extends Television {
 	private String Plasma;
 	private boolean HD;
 	
+	public TVHD() {
+	}
+	
 	public TVHD(String LED, String plasma, boolean HD,List<Channel>ch, String id) {
 		super(ch,id);
 		this.LED = LED;
@@ -45,7 +48,13 @@ public class TVHD extends Television {
 
 	@Override
 	public void registerChannels() {
+		
 		currentChannel = channels.get(channels.size() -1);
+	}
+
+	@Override
+	public String toString() {
+		return "TVHD: " + currentChannel;
 	}
 	
 	
