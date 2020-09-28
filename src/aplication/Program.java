@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import DesignTv.SmartTV;
 import DesignTv.TVHD;
-import entititie.RemoteControl;
 import entititie.Television;
 import exceptions.ExceptionChannel;
 
@@ -16,6 +15,7 @@ public class Program {
 
 		Television smartTV = new SmartTV(42,null, "LG");
 		Television tvHD = new TVHD("Led", "Plasma", false, null, "TV133");
+		
 		
 		int i = 0;
 		
