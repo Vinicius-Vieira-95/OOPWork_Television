@@ -1,11 +1,12 @@
 package aplication;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import DesignTv.SmartTV;
-import DesignTv.TVHD;
+import entititie.Channel;
 import entititie.Television;
-import exceptions.ExceptionChannel;
 
 public class Program {
 
@@ -13,29 +14,33 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		Television smartTV = new SmartTV(42,null, "LG");
-		Television tvHD = new TVHD("Led", "Plasma", false, null, "TV133");
+		Television smart = new SmartTV(50, channels(), "Samsung");
 		
+		smart.Showgrid();
+
+		System.out.println(smart.getCurrentChannel());
 		
-		int i = 0;
-		
-		while (i != 3){
-
-			try {
-				
-				System.out.println(smartTV.toString());
-				System.out.println(tvHD.toString());	
-				
-			}
-			catch(ExceptionChannel e) {
-				System.out.println(e.getMessage());
-			}
-			
-			i = 3;
-
-		}
-
 		sc.close();
+	}
+	
+	
+	public static List<Channel> channels(){
+		
+		List<Channel> channels = new ArrayList<Channel>();
+		
+		channels.add(new Channel("BBC", 13, true));
+		channels.add(new Channel("Globo", 10, true));
+		channels.add(new Channel("SBT", 12, false));
+		channels.add(new Channel("Band", 20, false));
+		channels.add(new Channel("Record", 8, true));
+		channels.add(new Channel("RedeTv", 2, true));
+		channels.add(new Channel("TvMetropole", 16, false));
+		channels.add(new Channel("RedeUnião", 17, true));
+		channels.add(new Channel("TvDiario", 22, true));
+		channels.add(new Channel("TvAparecida", 19, false));
+		
+		return channels;
+		
 	}
 
 }

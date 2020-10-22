@@ -18,7 +18,6 @@ public abstract class Television {
 	private static final Integer volMin = 0;
 
 	protected List<Channel> channels = new ArrayList<>();
-	protected List<Channel> registeredChannels = new ArrayList<>();
 	
 	public Television() {
 		
@@ -29,9 +28,6 @@ public abstract class Television {
 		this.id = id;
 		this.vol = 5;
 		this.channels = channels;
-		this.channels = registeredChannels;
-		
-		availableChannels();
 		channelOrder();
 	}
 
@@ -49,21 +45,6 @@ public abstract class Television {
 
 	public void setCurrentChannel(Channel currentChannel) {
 		this.currentChannel = currentChannel;
-	}
-
-	public void availableChannels() {
-
-		registeredChannels.add(new Channel("BBC", 13, true));
-		registeredChannels.add(new Channel("Globo", 10, true));
-		registeredChannels.add(new Channel("SBT", 12, false));
-		registeredChannels.add(new Channel("Band", 20, false));
-		registeredChannels.add(new Channel("Record", 8, true));
-		registeredChannels.add(new Channel("RedeTv", 2, true));
-		registeredChannels.add(new Channel("TvMetropole", 16, false));
-		registeredChannels.add(new Channel("RedeUnião", 17, true));
-		registeredChannels.add(new Channel("TvDiario", 22, true));
-		registeredChannels.add(new Channel("TvAparecida", 19, false));
-
 	}
 
 	// Gerar Ordem dos canais pegando o numero do canal
