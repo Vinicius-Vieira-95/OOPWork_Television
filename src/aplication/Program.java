@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import DesignTv.SmartTV;
+import DesignTv.TVHD;
 import entititie.Channel;
+import entititie.Controller;
 import entititie.Television;
 
 public class Program {
@@ -15,10 +17,13 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 
 		Television smart = new SmartTV(50, channels(), "Samsung");
+		Television tvhd = new TVHD("", "", true, channels(), "LG");
 		
-		smart.Showgrid();
-
-		System.out.println(smart.getCurrentChannel());
+		
+		Controller controller = new Controller();
+		
+		controller.addTv(smart);
+		controller.addTv(tvhd);
 		
 		sc.close();
 	}

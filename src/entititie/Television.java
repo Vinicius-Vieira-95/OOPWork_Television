@@ -43,10 +43,6 @@ public abstract class Television {
 		return currentChannel;
 	}
 
-	public void setCurrentChannel(Channel currentChannel) {
-		this.currentChannel = currentChannel;
-	}
-
 	// Gerar Ordem dos canais pegando o numero do canal
 	public void channelOrder() {
 		channels.sort((c1, c2) -> c1.getNumber().compareTo(c2.getNumber()));
@@ -90,7 +86,7 @@ public abstract class Television {
 
 		for (Channel c : channels) {
 			if (c.getNumber().equals(num)) {
-				setCurrentChannel(c);
+				currentChannel = c;
 				return true;
 			}
 		}

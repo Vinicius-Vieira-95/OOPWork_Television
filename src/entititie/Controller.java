@@ -2,43 +2,52 @@ package entititie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import DesignTv.SmartTV;
-import DesignTv.TVHD;
+import exceptions.ExceptionChannel;
 
-public class Controller extends Television {
+/*
+ * Crie uma classe ControleRemoto que pode manipular uma lista de televisões, sejam elas
+ * SmartTvs ou TVHDs (use polimorfismo, ou seja, considere todas do tipo Televisão),
+ * ao mesmo tempo. Portanto, o controle tem como atributo a lista de TVs que ele controla.
+ * Crie um método para adicionar TV, que recebe um objeto do tipo Televisão e o adiciona na lista de TVs apenas se a 
+ * TV não estiver cadastrada. Se já estiver, dispare uma exceção de TV já cadastrada.
+ * Essa classe também disponibiliza ao usuário as seguintes funcionalidades da TV por meio 
+ * de métodos (que simulam os botões do controle físico): aumentar volume, diminuir
+ *  volume, sintonizar canal específico, próximo canal, canal anterior, informar dados, e mostrar grade
+ * 
+ * 
+ */
 
-	private List<TVHD> tvHDList = new ArrayList<>();
-	private List<SmartTV> smartTVList = new ArrayList<>();
+public class Controller extends Television{
 
-	private SmartTV smart;
-	private TVHD hd;
+	private List<Television> list = new ArrayList<>();
 
 	public Controller() {
 
 	}
 
-	public Controller(SmartTV smart) {
-		this.smart = smart;
-	}
-
-	public Controller(TVHD hd) {
-		this.hd = hd;
-	}
-	
-	public void list(List<? extends Television> television) { // pega o tipo de array que erde de Televisão.
-
-		for (Television tv : television) {
-			System.out.println(tv.toString());
+	public void addTv(Television tv) {
+		for (Television t : list) {
+			if (t.equals(tv)) {
+				throw new ExceptionChannel("Tv is already registered");
+			}
 		}
 
+		list.add(tv);
+	}
+
+	public List<Television> getList() {
+		return list;
+	}
+
+	public void setList(List<Television> list) {
+		this.list = list;
 	}
 
 	@Override
 	public void registerChannels() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 }
