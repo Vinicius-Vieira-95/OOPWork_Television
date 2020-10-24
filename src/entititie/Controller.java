@@ -18,12 +18,14 @@ import exceptions.ExceptionChannel;
  * 
  */
 
-public class Controller extends Television{
+public class Controller {
 
 	private List<Television> list = new ArrayList<>();
 
+	private Television television;
+	
 	public Controller() {
-
+		
 	}
 
 	public void addTv(Television tv) {
@@ -43,11 +45,42 @@ public class Controller extends Television{
 	public void setList(List<Television> list) {
 		this.list = list;
 	}
-
-	@Override
-	public void registerChannels() {
-		// TODO Auto-generated method stub
-		
+	
+	public Television getTelevision() {
+		return television;
 	}
+
+	public void setTelevision(Television television) {
+		this.television = television;
+	}
+
+	public void selectTV(String marca) {
+		
+		for(Television t : list ) {
+			if(t.id.equalsIgnoreCase(marca)) {
+				television = t;
+			}
+		}
+	}
+	
+	public void UP() {
+		television.volumeUp();
+	}
+	public void DOWN() {
+		television.volumeDown();
+	}
+	public void registerChannels() {
+		television.registerChannels();
+	}
+	public void changeChannel(String arg) {
+		television.changeChannel(arg);
+	}
+	public void synChannel(int num) {
+		television.synChannel(num);
+	}
+	public void showGrid() {
+		television.Showgrid();
+	}
+	
 	
 }

@@ -19,11 +19,21 @@ public class Program {
 		Television smart = new SmartTV(50, channels(), "Samsung");
 		Television tvhd = new TVHD("", "", true, channels(), "LG");
 		
-		
 		Controller controller = new Controller();
 		
 		controller.addTv(smart);
 		controller.addTv(tvhd);
+		
+		controller.selectTV("Samsung");
+		
+		System.out.println(controller.getTelevision().getCurrentChannel());
+		System.out.println(controller.getTelevision().getVol());
+		
+		
+		controller.registerChannels();
+		
+		
+		controller.showGrid();
 		
 		sc.close();
 	}
