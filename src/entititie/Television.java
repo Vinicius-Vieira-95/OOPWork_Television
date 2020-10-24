@@ -149,12 +149,10 @@ public abstract class Television {
 		}
 		
 	}
-
 	
-	
-	
-	
-	
+	public void addChannel(Channel channel) {
+		channels.add(channel);
+	}
 	
 	
 	

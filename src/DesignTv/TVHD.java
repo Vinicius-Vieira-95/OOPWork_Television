@@ -49,7 +49,6 @@ public class TVHD extends Television {
 
 	@Override
 	public void registerChannels() {
-		
 		currentChannel = channels.get(channels.size() -1);
 	}
 
